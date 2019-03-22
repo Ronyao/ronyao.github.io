@@ -2,19 +2,23 @@
 <html lang="en">
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-<title>Categories - Ronyao&#39;s blogs</title>
+<title>jvm学习 - Ronyao&#39;s blogs</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-    <meta name="keywords" content="jvm">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Ronyao&#39;s blogs">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+    <meta name="description" content="java虚拟机的学习相当于一个工具，jvm结构jvm回收算法及收集器jvm优化eclipse运行调优">
+<meta name="keywords" content="jvm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jvm学习">
+<meta property="og:url" content="http://yoursite.com/2019/03/06/jvm学习/index.html">
 <meta property="og:site_name" content="Ronyao&#39;s blogs">
+<meta property="og:description" content="java虚拟机的学习相当于一个工具，jvm结构jvm回收算法及收集器jvm优化eclipse运行调优">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-03-15T07:32:00.372Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ronyao&#39;s blogs">
+<meta name="twitter:title" content="jvm学习">
+<meta name="twitter:description" content="java虚拟机的学习相当于一个工具，jvm结构jvm回收算法及收集器jvm优化eclipse运行调优">
 
 
 
@@ -86,7 +90,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.svg" alt="Ronyao&#39;s blogs" height="28">
+                <img src="/images/logo.svg" alt="jvm学习" height="28">
             
             </a>
         </div>
@@ -98,7 +102,7 @@
                 
                 <a class="navbar-item" href="/archives">Archives</a>
                 
-                <a class="navbar-item is-active" href="/categories">Categories</a>
+                <a class="navbar-item" href="/categories">Categories</a>
                 
                 <a class="navbar-item" href="/tags">Tags</a>
                 
@@ -131,27 +135,113 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
-<div class="card widget">
+                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-03-06T05:47:07.000Z">2019-03-06</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/java/">java</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 minutes read (About 547 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                jvm学习
+            
+        </h1>
+        <div class="content">
+            <p>java虚拟机的学习相当于一个工具，<br>jvm结构<br>jvm回收算法及收集器<br>jvm优化<br>eclipse运行调优</p>
+<a id="more"></a>
+<p>前两个算原理 后两个介绍工具和实战</p>
+<p>热点探测<br>对频繁加载的class文件直接编译成代码，相当于缓存，把常用的</p>
+<p>jvm 有两个端口client/server server拥有的内存更多</p>
+<p>jvm 总体结构图</p>
+<p>类加载子系统</p>
+<p>方法区 常量池<br>java堆 java实例 （重点）<br>直接内存 直接映射到物理内存，不受java堆控制，NIO</p>
+<p>垃圾回收系统 （重点）<br>对方法区、java堆和直接内存进行垃圾回收</p>
+<p>java栈 每一个Java虚拟机线程都有同一个有的java栈</p>
+<p>本地方法栈 本地方法就是操作系统的方法，api</p>
+<p>PC寄存器 </p>
+<p>执行引擎 jit just in time</p>
+<p>java堆<br>内部又分新生代，老年代、永久代。这是为了提高内存分配和垃圾回收的效率。<br>分代垃圾回收</p>
+<p>新生代<br>分三块 Eden 和 两个较小的 survivor 空间，比例 8：1：1<br>survivor区相当于给要分配到老年区的做担保与整理<br>老年代</p>
+<p>永久代（不需要过多的了解，以后可能会消失）</p>
+<p>垃圾回收常见算法<br>1引用计数 无法处理循环引用<br>2复制 示例survivor区，用于整理内存<br>3标记清除 最古老的算法，此算法需要暂停整个应用，同时，会产生内存碎片<br>4标记整理 算法3+算法2</p>
+<p>垃圾收集器<br>就是对垃圾回收算法的实现，jvm中垃圾收集器<br>scavengeGC（次收集）对新生代的eden收集<br>fullGC （全收集）对老年代区的收集</p>
+<p>hotspot 收集器<br>分两大类 新生代和老年代</p>
+<p>分代垃圾收集器</p>
+<p>新生代收集器<br>串行收集器 Serial -Xx+UseSerialGC 单线程，执行时其他工作必须停止</p>
+<p>优化方向<br>选择jvm版本<br>堆区<br>垃圾收集器的选择</p>
+<p>并行收集器 ParNew<br>缩短收集时间</p>
+<p>Parrallel Scavenge</p>
+<p>0</p>
+
+        </div>
+        
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
+                    <a class="has-link-grey -link" href="/tags/jvm/">jvm</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+<div class="card">
     <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Categories
-            </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/java/">
-            <span class="level-start">
-                <span class="level-item">java</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li>
-            </ul>
+        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
+        <div class="buttons is-centered">
+            
         </div>
     </div>
-</div></div>
+</div>
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/03/15/markdown常用语法/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">markdown常用语法</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2019/02/15/hello-world/">
+                <span class="level-item">Hello World</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
                 
 
 
@@ -608,7 +698,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.svg" alt="Ronyao&#39;s blogs" height="28">
+                    <img src="/images/logo.svg" alt="jvm学习" height="28">
                 
                 </a>
                 <p class="is-size-7">
